@@ -21,9 +21,9 @@ namespace CurrencyAssistent.DataParsers
                 if (Enum.TryParse(splt[1], out DataClass.BankEnumerator bank))
                 {
                     if(splt[3] != String.Empty)
-                        App.AddCurrencyRates(splt[0], bank, Decimal.Parse(splt[2]), Decimal.Parse(splt[3]), Int32.Parse(splt[4]), DateTime.Parse(splt[5]));
+                        CurrencySingleton.Instance.AddCurrencyRates(splt[0], bank, Decimal.Parse(splt[2]), Decimal.Parse(splt[3]), Int32.Parse(splt[4]), DateTime.Parse(splt[5]));
                     else
-                        App.AddCurrencyRates(splt[0], bank, Decimal.Parse(splt[2]), null, Int32.Parse(splt[4]), DateTime.Parse(splt[5]));
+                        CurrencySingleton.Instance.AddCurrencyRates(splt[0], bank, Decimal.Parse(splt[2]), null, Int32.Parse(splt[4]), DateTime.Parse(splt[5]));
                 }
             }
 
@@ -35,7 +35,7 @@ namespace CurrencyAssistent.DataParsers
                 File.Create(Comunicators.CurrencyDownloader.GetFileFolder + "data.csv").Close();
             try
             {
-                File.WriteAllText(Comunicators.CurrencyDownloader.GetFileFolder + "data.csv", App.SerializeCurrencies());
+                File.WriteAllText(Comunicators.CurrencyDownloader.GetFileFolder + "data.csv", CurrencySingleton.Instance.SerializeCurrencies());
             }
             catch (Exception e)
             {
@@ -63,7 +63,7 @@ namespace CurrencyAssistent.DataParsers
             foreach (var cur in file)
             {
                 var date = DateTime.Parse((cur["ratesValidityDate"] as string).Split('T')[0]);
-                App.AddCurrencyRates(cur["currencyISO"] as string, DataClass.BankEnumerator.KB, (cur["noncashSell"] as decimal?).Value, (cur["noncashBuy"] as decimal?).Value, (cur["currencyUnit"] as int?).Value, date);
+                CurrencySingleton.Instance.AddCurrencyRates(cur["currencyISO"] as string, DataClass.BankEnumerator.KB, (cur["noncashSell"] as decimal?).Value, (cur["noncashBuy"] as decimal?).Value, (cur["currencyUnit"] as int?).Value, date);
             }
             File.Delete(Comunicators.CurrencyDownloader.GetFileFolder + "3.json");
         }
@@ -76,7 +76,7 @@ namespace CurrencyAssistent.DataParsers
             foreach (var line in file)
             {
                 var splt = line.Split(';');
-                App.AddCurrencyRates(splt[2], DataClass.BankEnumerator.CSOB, Decimal.Parse(splt[5]), Decimal.Parse(splt[4]), Int32.Parse(splt[1]), date);
+                CurrencySingleton.Instance.AddCurrencyRates(splt[2], DataClass.BankEnumerator.CSOB, Decimal.Parse(splt[5]), Decimal.Parse(splt[4]), Int32.Parse(splt[1]), date);
             }
             File.Delete(Comunicators.CurrencyDownloader.GetFileFolder + "1.txt");
         }
@@ -89,7 +89,7 @@ namespace CurrencyAssistent.DataParsers
             foreach (var line in file)
             {
                 var splt = line.Split('|');
-                App.AddCurrencyRates(splt[3], DataClass.BankEnumerator.CNB, Decimal.Parse(splt[4]), null, Int32.Parse(splt[2]), date);
+                CurrencySingleton.Instance.AddCurrencyRates(splt[3], DataClass.BankEnumerator.CNB, Decimal.Parse(splt[4]), null, Int32.Parse(splt[2]), date);
             }
             File.Delete(Comunicators.CurrencyDownloader.GetFileFolder + "5.txt");
         }
@@ -121,7 +121,7 @@ namespace CurrencyAssistent.DataParsers
                 var amount = Int32.Parse(splt[1].Trim().Replace("&nbsp;</td>\r\n\t<td>�</td>", ""));
                 var buyRate = Decimal.Parse(splt[2].Trim().Replace("�", "").Replace("</td>", "").Replace(".", ","));
                 var sellRate = Decimal.Parse(splt[3].Trim().Replace("�", "").Replace("</td>", "").Replace(".", ","));
-                App.AddCurrencyRates(cur, bank, sellRate, buyRate, amount, date);
+                CurrencySingleton.Instance.AddCurrencyRates(cur, bank, sellRate, buyRate, amount, date);
             }
             File.Delete(Comunicators.CurrencyDownloader.GetFileFolder + fileName);
         }

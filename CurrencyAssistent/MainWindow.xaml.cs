@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,18 @@ namespace CurrencyAssistent
         public MainWindow()
         {
             InitializeComponent();
+            lvCheckboxes.ItemsSource = CurrencySingleton.Instance.Currencies;
+            lvGraphs.ItemsSource = CurrencySingleton.Instance.Currencies;
+            CurrencySingleton.Instance.Currencies.CollectionChanged += Currencies_CollectionChanged;
+        }
+
+        private void Currencies_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add || e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            {
+                lvCheckboxes.ItemsSource = CurrencySingleton.Instance.Currencies;
+                lvGraphs.ItemsSource = CurrencySingleton.Instance.Currencies;
+            }
         }
 
 
@@ -46,7 +59,7 @@ namespace CurrencyAssistent
                     {
                         File.WriteAllBytes(diag.FileName, Exports.ExcelExport.ExportCurrencies());
                     }
-                    catch(Exception exc)
+                    catch (Exception exc)
                     {
 
                     }

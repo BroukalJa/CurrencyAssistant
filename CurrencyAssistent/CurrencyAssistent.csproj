@@ -75,6 +75,7 @@
     </ApplicationDefinition>
     <Compile Include="Comunicators\CurrencyDownloader.cs" />
     <Compile Include="Converters\BankEnumToStringConverter.cs" />
+    <Compile Include="CurrencySingleton.cs" />
     <Compile Include="DataClass\BankEnumerator.cs" />
     <Compile Include="DataClass\CurrentCurrency.cs" />
     <Compile Include="DataClass\DayCurrency.cs" />

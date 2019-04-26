@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CurrencyAssistent"
         xmlns:view="clr-namespace:CurrencyAssistent.Views"
         mc:Ignorable="d"
-        Title="Kurzovní asistent" Height="450" Width="800" Loaded="BtnRefresh_Click">
+        Title="Kurzovní asistent" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -19,7 +19,7 @@
         <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
                 <Expander Header="Výběr zobrazovaných měn">
-                    <ListView ItemsSource="{Binding Path=Currencies, Source={x:Static Application.Current}}" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll="False">
+                    <ListView x:Name="lvCheckboxes" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll="False">
                         <ListView.Template>
                                 <ControlTemplate>
                                     <ItemsPresenter></ItemsPresenter>
@@ -32,7 +32,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Expander>
-                <ListView ItemsSource="{Binding Path=Currencies, Source={x:Static Application.Current}}" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll ="False" ScrollViewer.IsDeferredScrollingEnabled="False" BorderThickness="0" Focusable="False" IsHitTestVisible="False">
+                <ListView x:Name="lvGraphs" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll ="False" ScrollViewer.IsDeferredScrollingEnabled="False" BorderThickness="0" Focusable="False" IsHitTestVisible="False">
                     <ListView.Template>
                         <ControlTemplate>
                             <ItemsPresenter></ItemsPresenter>

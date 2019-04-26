@@ -24,31 +24,13 @@ namespace CurrencyAssistent
 
         const double interval16Hours = interval60Minutes * 16;
 
-        public static List<DataClass.Currency> Currencies { get; set; } = new List<DataClass.Currency>();
-
-        public static void AddCurrencyRates(string currency, DataClass.BankEnumerator bank, decimal sellRate, decimal? buyRate, int amount, DateTime date)
-        {
-            if (!Currencies.Any(x => x.Name == currency))
-                Currencies.Add(new DataClass.Currency() { Name = currency });
-            var cur = Currencies.First(x => x.Name == currency);
-            cur.AddRate(bank, sellRate, buyRate, amount, date);
-        }
-
-        public static string SerializeCurrencies()
-        {
-            var sb = new StringBuilder();
-            foreach (var cur in Currencies)
-            {
-                sb.Append(cur.GetSerializedString());
-            }
-            return sb.ToString();
-        }
+        
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-			DataParsers.Parsers.CurrencyParser();
-			//Comunicators.CurrencyDownloader.DownloadFiles();
-			var time = DateTime.Now.TimeOfDay.TotalMilliseconds;
+            //DataParsers.Parsers.CurrencyParser();
+            Comunicators.CurrencyDownloader.DownloadFiles();
+            var time = DateTime.Now.TimeOfDay.TotalMilliseconds;
             double interval = 0;
             if (time < interval16Hours)
                 interval = interval16Hours - time;

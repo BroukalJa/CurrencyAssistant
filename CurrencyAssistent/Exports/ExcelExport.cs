@@ -117,7 +117,7 @@ namespace CurrencyAssistent.Exports
 
                     int rowIndex = 3;
 
-                    foreach (var cur in App.Currencies)
+                    foreach (var cur in CurrencySingleton.Instance.Currencies)
                     {
                         Row currencyHeaderRow = new Row() { Height = 24, CustomHeight = true };
                         currencyHeaderRow.AppendChild(new Cell() { StyleIndex = 2, CellValue = new CellValue(cur.Name), DataType = CellValues.String });
