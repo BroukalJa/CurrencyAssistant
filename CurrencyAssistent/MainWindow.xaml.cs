@@ -29,7 +29,7 @@ namespace CurrencyAssistent
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            //Comunicators.CurrencyDownloader.DownloadFiles();
+            Comunicators.CurrencyDownloader.DownloadFiles();
         }
 
         private void BtnXlsx_Click(object sender, RoutedEventArgs e)
