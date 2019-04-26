@@ -1,6 +1,5 @@
 #Don`t track content of these folders
-/CurrencyAssistent/bin/debug/Static/
-/CurrencyAssistent/bin/release/Static/
+/CurrencyAssistent/bin/
 /CurrencyAssistent/Static/
 /CurrencyAssistent/.vs/
 /CurrencyAssistent/obj/
