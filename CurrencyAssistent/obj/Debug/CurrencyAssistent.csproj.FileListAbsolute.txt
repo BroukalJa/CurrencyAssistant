@@ -1,0 +1,107 @@
+C:\Users\Misa\source\repos\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe.config
+C:\Users\Misa\source\repos\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe
+C:\Users\Misa\source\repos\CurrencyAssistent\bin\Debug\CurrencyAssistent.pdb
+C:\Users\Misa\source\repos\CurrencyAssistent\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csprojAssemblyReference.cache
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\MainWindow.g.cs
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.g.cs
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.g.cs
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\App.g.cs
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.cache
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.lref
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\MainWindow.baml
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.baml
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.baml
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.g.resources
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.Properties.Resources.resources
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.GenerateResource.cache
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CoreCompileInputs.cache
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CopyComplete
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.exe
+C:\Users\Misa\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.pdb
+C:\Users\Misa\source\repos\CurrencyAssistent\bin\Debug\System.Web.Helpers.dll
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe.config
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\CurrencyAssistent.pdb
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\System.Web.Helpers.dll
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csprojAssemblyReference.cache
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\MainWindow.g.cs
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.g.cs
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.g.cs
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\App.g.cs
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.cache
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.lref
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\MainWindow.baml
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.baml
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.baml
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.g.resources
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.Properties.Resources.resources
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.GenerateResource.cache
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CoreCompileInputs.cache
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CopyComplete
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.exe
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\obj\Debug\CurrencyAssistent.pdb
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.xml
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\System.IO.Packaging.dll
+C:\Users\Jan Broukal\source\repos\CurrencyAssistent\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe.config
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\CurrencyAssistent.pdb
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\System.IO.Packaging.dll
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\System.Web.Helpers.dll
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\radovan.capek\Documents\CurrencyAssistent\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.xml
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.csprojAssemblyReference.cache
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\MainWindow.g.cs
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.g.cs
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.g.cs
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\App.g.cs
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.cache
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.lref
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\MainWindow.baml
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.baml
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.baml
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.g.resources
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.Properties.Resources.resources
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.GenerateResource.cache
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CoreCompileInputs.cache
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CopyComplete
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.exe
+C:\Users\radovan.capek\Documents\CurrencyAssistent\obj\Debug\CurrencyAssistent.pdb
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe.config
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\CurrencyAssistent.exe
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\CurrencyAssistent.pdb
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\System.IO.Packaging.dll
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\System.Web.Helpers.dll
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.xml
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.csprojAssemblyReference.cache
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\MainWindow.g.cs
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.g.cs
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.g.cs
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\App.g.cs
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.cache
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent_MarkupCompile.lref
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\MainWindow.baml
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\Views\CurrentCurrencyDetail.baml
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\Views\CurrencyDetail.baml
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.g.resources
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.Properties.Resources.resources
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.GenerateResource.cache
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CoreCompileInputs.cache
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.csproj.CopyComplete
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.exe
+C:\Users\Jan Broukal\Desktop\CurrencyAssistent\obj\Debug\CurrencyAssistent.pdb
