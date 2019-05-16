@@ -3,72 +3,77 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:local="clr-namespace:CurrencyAssistent"
         xmlns:view="clr-namespace:CurrencyAssistent.Views"
         mc:Ignorable="d"
         Title="Kurzovní asistent" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button x:Name="btnRefresh" Content="Stáhnout aktuální data" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Background="White" Click="BtnRefresh_Click"/>
-            <Button x:Name="btnXlsx" Content="Export dat do .xlsx" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Background="White" Click="BtnXlsx_Click"/>
-        </StackPanel>
-        <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel Orientation="Vertical">
-                <Expander Header="Výběr zobrazovaných měn">
-                    <ListView x:Name="lvCheckboxes" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll="False">
-                        <ListView.Template>
+    <xceed:BusyIndicator x:Name="biDownload">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button x:Name="btnRefresh" Content="Stáhnout aktuální data" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Background="White" Click="BtnRefresh_Click"/>
+                <Button x:Name="btnXlsx" Content="Export dat do .xlsx" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Background="White" Click="BtnXlsx_Click"/>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <Expander Header="Výběr zobrazovaných měn">
+                        <ListView x:Name="lvCheckboxes" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll="False">
+                            <ListView.Template>
                                 <ControlTemplate>
                                     <ItemsPresenter></ItemsPresenter>
                                 </ControlTemplate>
                             </ListView.Template>
                             <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding Visible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Expander>
+                    <ListView x:Name="lvGraphs" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll ="False" ScrollViewer.IsDeferredScrollingEnabled="False" BorderThickness="0" Focusable="False" IsHitTestVisible="False">
+                        <ListView.Template>
+                            <ControlTemplate>
+                                <ItemsPresenter></ItemsPresenter>
+                            </ControlTemplate>
+                        </ListView.Template>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Visible, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Visible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Grid>
+                                    <Grid.Style>
+                                        <Style TargetType="{x:Type Grid}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Visible, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <view:CurrencyDetail/>
+                                </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </Expander>
-                <ListView x:Name="lvGraphs" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll ="False" ScrollViewer.IsDeferredScrollingEnabled="False" BorderThickness="0" Focusable="False" IsHitTestVisible="False">
-                    <ListView.Template>
-                        <ControlTemplate>
-                            <ItemsPresenter></ItemsPresenter>
-                        </ControlTemplate>
-                    </ListView.Template>
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListViewItem}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                            <Setter Property="BorderBrush" Value="Black"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Visible, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.Style>
-                                    <Style TargetType="{x:Type Grid}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Visible, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <view:CurrencyDetail/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <TextBlock Grid.Row="2" Text="© Broukal, Čapek, Zámečníková" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+        </Grid>
+    </xceed:BusyIndicator>
 </Window>

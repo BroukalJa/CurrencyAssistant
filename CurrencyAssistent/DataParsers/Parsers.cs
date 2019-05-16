@@ -20,13 +20,20 @@ namespace CurrencyAssistent.DataParsers
                 var splt = line.Split(';');
                 if (Enum.TryParse(splt[1], out DataClass.BankEnumerator bank))
                 {
-                    if(splt[3] != String.Empty)
+                    if (splt[3] != String.Empty)
                         CurrencySingleton.Instance.AddCurrencyRates(splt[0], bank, Decimal.Parse(splt[2]), Decimal.Parse(splt[3]), Int32.Parse(splt[4]), DateTime.Parse(splt[5]));
                     else
                         CurrencySingleton.Instance.AddCurrencyRates(splt[0], bank, Decimal.Parse(splt[2]), null, Int32.Parse(splt[4]), DateTime.Parse(splt[5]));
                 }
             }
-
+            foreach (var cur in CurrencySingleton.Instance.Currencies)
+            {
+                var blist = cur.BankRates.Keys.ToList();
+                foreach (var bank in blist)
+                {
+                    //cur.BankRates[bank] = cur.BankRates[bank].OrderBy(x => x.Key).ToDictionary(v => v.Key, v => v.Value);
+                }
+            }
         }
 
         public static void CurrencyArchiver()

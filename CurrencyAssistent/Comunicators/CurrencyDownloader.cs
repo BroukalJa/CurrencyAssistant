@@ -18,6 +18,7 @@ namespace CurrencyAssistent.Comunicators
 
         public static void DownloadFiles()
         {
+            CurrencySingleton.Instance.DownloadRunning = true;
             GetCurrencyFile(CSOB, "1.txt");
             GetCurrencyFile(RB, "2.txt");
             GetCurrencyFile(KB, "3.json");
@@ -77,6 +78,7 @@ namespace CurrencyAssistent.Comunicators
                 DataParsers.Parsers.CurrencyParser();
                 DataParsers.Parsers.CurrencyArchiver();
                 DataParsers.Parsers.DeleteSourceFiles();
+                CurrencySingleton.Instance.DownloadRunning = false;
             }
 
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,16 @@ namespace CurrencyAssistent.DataClass
 
         public string Name { get; set; }
 
-        public Dictionary<BankEnumerator, Dictionary<DateTime, DayCurrency>> BankRates { get; set; } = new Dictionary<BankEnumerator, Dictionary<DateTime, DayCurrency>>();
+        public Dictionary<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>> BankRates { get; set; } = new Dictionary<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void AddRate(BankEnumerator bank, decimal sellRate, decimal? buyRate, int amount, DateTime date)
         {
             if (!BankRates.Any(x => x.Key == bank))
-                BankRates.Add(bank, new Dictionary<DateTime, DayCurrency>());
-            if(!BankRates[bank].ContainsKey(date))
-                BankRates[bank].Add(date, new DayCurrency() { BuyRate = buyRate, Amount = amount, SellRate = sellRate });
+                BankRates.Add(bank, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>());
+            if(!BankRates[bank].Any(x => x.Key == date))
+                BankRates[bank].Add(new KeyValuePair<DateTime, DayCurrency>(date, new DayCurrency() { BuyRate = buyRate, Amount = amount, SellRate = sellRate }));
         }
 
         //public void AddBuyRate(BankEnumerator bank, decimal rate, DateTime date)
@@ -37,8 +38,8 @@ namespace CurrencyAssistent.DataClass
         {
             get
             {
-                if (BankRates.Keys.Contains(BankEnumerator.CNB) && BankRates[BankEnumerator.CNB].Keys.Contains(DateTime.Today))
-                    return new CurrentCurrency() { Rate = BankRates[BankEnumerator.CNB][DateTime.Today].SellRate, Bank = BankEnumerator.CNB };
+                if (BankRates.Keys.Contains(BankEnumerator.CNB) && BankRates[BankEnumerator.CNB].Any(x => x.Key == DateTime.Today))
+                    return new CurrentCurrency() { Rate = BankRates[BankEnumerator.CNB].First(x => x.Key == DateTime.Today).Value.SellRate, Bank = BankEnumerator.CNB };
                 else
                     return null;
             }
@@ -49,16 +50,16 @@ namespace CurrencyAssistent.DataClass
             get
             {
                 CurrentCurrency cur = null;
-                if (BankRates.Any(x => x.Key != BankEnumerator.CNB && x.Value.Keys.Contains(DateTime.Today)))
+                if (BankRates.Any(x => x.Key != BankEnumerator.CNB && x.Value.Any(y => y.Key == DateTime.Today)))
                 {
-                    var today = BankRates.Where(x => x.Key != BankEnumerator.CNB && x.Value.Keys.Contains(DateTime.Today)).ToList();
+                    var today = BankRates.Where(x => x.Key != BankEnumerator.CNB && x.Value.Any(y => y.Key == DateTime.Today)).ToList();
                     foreach (var rate in today)
                     {
                         if (cur == null)
-                            cur = new CurrentCurrency() { Rate = rate.Value[DateTime.Today].BuyRate.Value, Bank = rate.Key };
-                        else if (cur.Rate < rate.Value[DateTime.Today].BuyRate.Value)
+                            cur = new CurrentCurrency() { Rate = rate.Value.First(x => x.Key == DateTime.Today).Value.BuyRate.Value, Bank = rate.Key };
+                        else if (cur.Rate < rate.Value.First(x => x.Key == DateTime.Today).Value.BuyRate.Value)
                         {
-                            cur.Rate = rate.Value[DateTime.Today].BuyRate.Value;
+                            cur.Rate = rate.Value.First(x => x.Key == DateTime.Today).Value.BuyRate.Value;
                             cur.Bank = rate.Key;
                         }
                     }
@@ -72,16 +73,16 @@ namespace CurrencyAssistent.DataClass
             get
             {
                 CurrentCurrency cur = null;
-                if (BankRates.Any(x => x.Key != BankEnumerator.CNB && x.Value.Keys.Contains(DateTime.Today)))
+                if (BankRates.Any(x => x.Key != BankEnumerator.CNB && x.Value.Any(y => y.Key == DateTime.Today)))
                 {
-                    var today = BankRates.Where(x => x.Key != BankEnumerator.CNB && x.Value.Keys.Contains(DateTime.Today)).ToList();
+                    var today = BankRates.Where(x => x.Key != BankEnumerator.CNB && x.Value.Any(y => y.Key == DateTime.Today)).ToList();
                     foreach (var rate in today)
                     {
                         if (cur == null)
-                            cur = new CurrentCurrency() { Rate = rate.Value[DateTime.Today].SellRate, Bank = rate.Key };
-                        else if (cur.Rate > rate.Value[DateTime.Today].SellRate)
+                            cur = new CurrentCurrency() { Rate = rate.Value.First(x => x.Key == DateTime.Today).Value.SellRate, Bank = rate.Key };
+                        else if (cur.Rate > rate.Value.First(x => x.Key == DateTime.Today).Value.SellRate)
                         {
-                            cur.Rate = rate.Value[DateTime.Today].SellRate;
+                            cur.Rate = rate.Value.First(x => x.Key == DateTime.Today).Value.SellRate;
                             cur.Bank = rate.Key;
                         }
                     }

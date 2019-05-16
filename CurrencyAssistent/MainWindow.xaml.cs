@@ -25,9 +25,20 @@ namespace CurrencyAssistent
         public MainWindow()
         {
             InitializeComponent();
+            //Comunicators.NewVersionDownloader.GetNewVersion();
+            CurrencySingleton.Instance.PropertyChanged += Instance_PropertyChanged;
+            biDownload.IsBusy = CurrencySingleton.Instance.DownloadRunning;
             lvCheckboxes.ItemsSource = CurrencySingleton.Instance.Currencies;
             lvGraphs.ItemsSource = CurrencySingleton.Instance.Currencies;
             CurrencySingleton.Instance.Currencies.CollectionChanged += Currencies_CollectionChanged;
+        }
+
+        private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "DownloadRunning")
+            {
+                biDownload.IsBusy = (sender as CurrencySingleton).DownloadRunning;
+            }
         }
 
         private void Currencies_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

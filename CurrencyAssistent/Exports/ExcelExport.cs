@@ -134,50 +134,50 @@ namespace CurrencyAssistent.Exports
                         sheetData.AppendChild(currencyHeaderRow);
                         mergeCells1.AppendChild(new MergeCell() { Reference = "A" + rowIndex + ":K" + rowIndex + "" });
                         rowIndex++;
-                        var dates = cur.BankRates[cur.BankRates.Keys.First()].Keys.ToList();
+                        var dates = cur.BankRates[cur.BankRates.Keys.First()].Select(x => x.Key).ToList();
                         foreach (var date in dates)
                         {
                             Row newRow = new Row() { Height = 24, CustomHeight = true };
                             newRow.AppendChild(new Cell() { StyleIndex = 1, CellValue = new CellValue(date.ToShortDateString()), DataType = CellValues.Date });
-                            newRow.AppendChild(new Cell() { StyleIndex = 1, CellValue = new CellValue(cur.BankRates[cur.BankRates.Keys.First()][date].Amount.ToString()), DataType = CellValues.Number });
+                            newRow.AppendChild(new Cell() { StyleIndex = 1, CellValue = new CellValue(cur.BankRates[cur.BankRates.Keys.First()].First(x => x.Key == date).Value.Amount.ToString()), DataType = CellValues.Number });
                             if (cur.BankRates.Keys.Contains(DataClass.BankEnumerator.CNB))
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CNB][date].SellRate.ToString().Replace(',','.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CNB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',','.')), DataType = CellValues.Number });
                             else
                                 newRow.AppendChild(new Cell() { StyleIndex = 5 });
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.CSOB) && cur.BankRates[DataClass.BankEnumerator.CSOB].ContainsKey(date))
+                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.CSOB) && cur.BankRates[DataClass.BankEnumerator.CSOB].Any(x => x.Key == date))
                             {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CSOB][date].SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CSOB][date].BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                            }
-                            else
-                            {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6 });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5 });
-                            }
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.RB) && cur.BankRates[DataClass.BankEnumerator.RB].ContainsKey(date))
-                            {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.RB][date].SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.RB][date].BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CSOB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CSOB].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
                             }
                             else
                             {
                                 newRow.AppendChild(new Cell() { StyleIndex = 6 });
                                 newRow.AppendChild(new Cell() { StyleIndex = 5 });
                             }
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.KB) && cur.BankRates[DataClass.BankEnumerator.KB].ContainsKey(date))
+                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.RB) && cur.BankRates[DataClass.BankEnumerator.RB].Any(x => x.Key == date))
                             {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.KB][date].SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.KB][date].BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.RB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.RB].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
                             }
                             else
                             {
                                 newRow.AppendChild(new Cell() { StyleIndex = 6 });
                                 newRow.AppendChild(new Cell() { StyleIndex = 5 });
                             }
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.SPORITELNA) && cur.BankRates[DataClass.BankEnumerator.SPORITELNA].ContainsKey(date))
+                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.KB) && cur.BankRates[DataClass.BankEnumerator.KB].Any(x => x.Key == date))
                             {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.SPORITELNA][date].SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.SPORITELNA][date].BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.KB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.KB].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                            }
+                            else
+                            {
+                                newRow.AppendChild(new Cell() { StyleIndex = 6 });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5 });
+                            }
+                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.SPORITELNA) && cur.BankRates[DataClass.BankEnumerator.SPORITELNA].Any(x => x.Key == date))
+                            {
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.SPORITELNA].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.SPORITELNA].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
                             }
                             else
                             {
