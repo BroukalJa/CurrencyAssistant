@@ -24,6 +24,16 @@ namespace CurrencyAssistent
             cur.AddRate(bank, sellRate, buyRate, amount, date);
         }
 
+        public void FilterCurrencies()
+        {
+            foreach(var cur in Currencies)
+            {
+                cur.FilterVisible();
+            }
+        }
+
+        public int ActiveFilter { get; set; } = 0;
+
         private bool downloadRunning = false;
 
         public bool DownloadRunning

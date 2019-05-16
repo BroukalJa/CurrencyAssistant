@@ -30,7 +30,7 @@ namespace CurrencyAssistent
             biDownload.IsBusy = CurrencySingleton.Instance.DownloadRunning;
             lvCheckboxes.ItemsSource = CurrencySingleton.Instance.Currencies;
             lvGraphs.ItemsSource = CurrencySingleton.Instance.Currencies;
-            CurrencySingleton.Instance.Currencies.CollectionChanged += Currencies_CollectionChanged;
+            //CurrencySingleton.Instance.Currencies.CollectionChanged += Currencies_CollectionChanged;
         }
 
         private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -76,6 +76,25 @@ namespace CurrencyAssistent
                     }
                 }
             }
+        }
+
+        private void RbAll_Checked(object sender, RoutedEventArgs e)
+        {
+            CurrencySingleton.Instance.ActiveFilter = 0;
+            CurrencySingleton.Instance.FilterCurrencies();
+        }
+
+        private void RbMonth_Checked(object sender, RoutedEventArgs e)
+        {
+            CurrencySingleton.Instance.ActiveFilter = 1;
+            CurrencySingleton.Instance.FilterCurrencies();
+
+        }
+
+        private void RbWeek_Checked(object sender, RoutedEventArgs e)
+        {
+            CurrencySingleton.Instance.ActiveFilter = 2;
+            CurrencySingleton.Instance.FilterCurrencies();
         }
     }
 }

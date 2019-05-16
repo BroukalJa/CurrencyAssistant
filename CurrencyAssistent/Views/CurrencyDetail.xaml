@@ -95,35 +95,35 @@
                     </chartingToolkit:CategoryAxis.GridLineStyle>
                 </chartingToolkit:CategoryAxis>
             </chartingToolkit:Chart.Axes>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[0].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[0].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[0].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding VisibleBankRates[0].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Black"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[1].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[1].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[1].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding VisibleBankRates[1].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Blue"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[2].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[2].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[2].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding VisibleBankRates[2].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Red"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[3].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[3].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[3].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding VisibleBankRates[3].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Orange"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[4].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[4].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[4].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding VisibleBankRates[4].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Green"/>
@@ -184,28 +184,28 @@
                 </chartingToolkit:CategoryAxis>
 
             </chartingToolkit:Chart.Axes>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[1].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[1].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[1].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding VisibleBankRates[1].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Blue"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[2].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[2].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[2].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding VisibleBankRates[2].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Red"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[3].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[3].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[3].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding VisibleBankRates[3].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Orange"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="{Binding BankRates[4].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[4].Value}">
+            <chartingToolkit:LineSeries Title="{Binding VisibleBankRates[4].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding VisibleBankRates[4].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Green"/>

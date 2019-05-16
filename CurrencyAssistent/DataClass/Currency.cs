@@ -17,12 +17,18 @@ namespace CurrencyAssistent.DataClass
             BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.KB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
             BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.RB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
             BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.SPORITELNA, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
-
+            VisibleBankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.CNB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            VisibleBankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.CSOB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            VisibleBankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.KB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            VisibleBankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.RB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            VisibleBankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.SPORITELNA, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
         }
 
         public string Name { get; set; }
 
         public ObservableCollection<KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>> BankRates { get; set; } = new ObservableCollection<KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>>();
+
+        public ObservableCollection<KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>> VisibleBankRates { get; set; } = new ObservableCollection<KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,6 +38,34 @@ namespace CurrencyAssistent.DataClass
                 BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(bank, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
             if (!BankRates.First(x => x.Key == bank).Value.Any(x => x.Key == date))
                 BankRates.First(x => x.Key == bank).Value.Add(new KeyValuePair<DateTime, DayCurrency>(date, new DayCurrency() { BuyRate = buyRate, Amount = amount, SellRate = sellRate }));
+        }
+
+        public void FilterVisible()
+        {
+            foreach(var bank in BankRates)
+            {
+                if (!VisibleBankRates.Any(x => x.Key == bank.Key))
+                    VisibleBankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(bank.Key, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+                else
+                    VisibleBankRates.First(x => x.Key == bank.Key).Value.Clear();
+                foreach (var rate in bank.Value)
+                {
+                    switch (CurrencySingleton.Instance.ActiveFilter)
+                    {
+                        case 0:
+                            VisibleBankRates.First(x => x.Key == bank.Key).Value.Add(rate);
+                            break;
+                        case 1:
+                            if(rate.Key > DateTime.Today.AddDays(-30))
+                                VisibleBankRates.First(x => x.Key == bank.Key).Value.Add(rate);
+                            break;
+                        case 2:
+                            if (rate.Key > DateTime.Today.AddDays(-7))
+                                VisibleBankRates.First(x => x.Key == bank.Key).Value.Add(rate);
+                            break;
+                    }
+                }
+            }
         }
 
         //public void AddBuyRate(BankEnumerator bank, decimal rate, DateTime date)

@@ -78,6 +78,7 @@ namespace CurrencyAssistent.Comunicators
                 DataParsers.Parsers.CurrencyParser();
                 DataParsers.Parsers.CurrencyArchiver();
                 DataParsers.Parsers.DeleteSourceFiles();
+                CurrencySingleton.Instance.FilterCurrencies();
                 CurrencySingleton.Instance.DownloadRunning = false;
             }
 

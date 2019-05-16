@@ -8,7 +8,7 @@
         xmlns:view="clr-namespace:CurrencyAssistent.Views"
         mc:Ignorable="d"
         Title="Kurzovní asistent" Height="450" Width="800">
-    <xceed:BusyIndicator x:Name="biDownload">
+    <xceed:BusyIndicator x:Name="biDownload" BusyContent="Probíhá stahování">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -18,6 +18,14 @@
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Button x:Name="btnRefresh" Content="Stáhnout aktuální data" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Background="White" Click="BtnRefresh_Click"/>
                 <Button x:Name="btnXlsx" Content="Export dat do .xlsx" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Background="White" Click="BtnXlsx_Click"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Volba zobrazení" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton x:Name="rbAll" Content="vše" Margin="3,0" IsChecked="True" Checked="RbAll_Checked"/>
+                        <RadioButton x:Name="rbMonth" Content="měsíc" Margin="3,0" Checked="RbMonth_Checked"/>
+                        <RadioButton x:Name="rbWeek" Content="týden" Margin="3,0" Checked="RbWeek_Checked"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
             <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
