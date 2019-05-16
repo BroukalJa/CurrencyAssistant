@@ -29,8 +29,7 @@ namespace CurrencyAssistent
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             //DataParsers.Parsers.CurrencyParser();
-            //Comunicators.CurrencyDownloader.DownloadFiles();
-            DataParsers.Parsers.CurrencyParser();
+            Comunicators.CurrencyDownloader.DownloadFiles();
             var time = DateTime.Now.TimeOfDay.TotalMilliseconds;
             double interval = 0;
             if (time < interval16Hours)
