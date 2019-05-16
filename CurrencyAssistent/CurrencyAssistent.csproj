@@ -90,6 +90,7 @@
     </ApplicationDefinition>
     <Compile Include="Comunicators\CurrencyDownloader.cs" />
     <Compile Include="Comunicators\NewVersionDownloader.cs" />
+    <Compile Include="Converters\BankEnumToColorConverter.cs" />
     <Compile Include="Converters\BankEnumToStringConverter.cs" />
     <Compile Include="CurrencySingleton.cs" />
     <Compile Include="DataClass\BankEnumerator.cs" />

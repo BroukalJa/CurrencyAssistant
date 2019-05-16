@@ -9,10 +9,11 @@
              xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
              xmlns:chartingprimitives="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="800" Width="700">
+             d:DesignHeight="300" d:DesignWidth="800" MinWidth="1200" x:Name="ucCurDetail">
     <UserControl.Resources>
         <ResourceDictionary>
             <conv:BankEnumToStringConverter x:Key="convTitle"/>
+            <conv:BankEnumToColorConverter x:Key="convColor"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -94,35 +95,35 @@
                     </chartingToolkit:CategoryAxis.GridLineStyle>
                 </chartingToolkit:CategoryAxis>
             </chartingToolkit:Chart.Axes>
-            <chartingToolkit:LineSeries Title="ČNB" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[CNB]}">
+            <chartingToolkit:LineSeries Title="{Binding BankRates[0].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[0].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Black"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="ČSOB" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[CSOB]}">
+            <chartingToolkit:LineSeries Title="{Binding BankRates[1].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[1].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Blue"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="Raiffeisen BANK" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[RB]}">
-                <chartingToolkit:LineSeries.DataPointStyle>
-                    <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
-                        <Setter Property="Background" Value="Orange"/>
-                    </Style>
-                </chartingToolkit:LineSeries.DataPointStyle>
-            </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="Komerční banka" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[KB]}">
+            <chartingToolkit:LineSeries Title="{Binding BankRates[2].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[2].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Red"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="Česká spořitelna" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[SPORITELNA]}">
+            <chartingToolkit:LineSeries Title="{Binding BankRates[3].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[3].Value}">
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
+                        <Setter Property="Background" Value="Orange"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+            </chartingToolkit:LineSeries>
+            <chartingToolkit:LineSeries Title="{Binding BankRates[4].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.SellRate" ItemsSource="{Binding BankRates[4].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Green"/>
@@ -183,28 +184,28 @@
                 </chartingToolkit:CategoryAxis>
 
             </chartingToolkit:Chart.Axes>
-            <chartingToolkit:LineSeries Title="ČSOB" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[CSOB]}">
+            <chartingToolkit:LineSeries Title="{Binding BankRates[1].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[1].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Blue"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="Raiffeisen BANK" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[RB]}">
-                <chartingToolkit:LineSeries.DataPointStyle>
-                    <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
-                        <Setter Property="Background" Value="Orange"/>
-                    </Style>
-                </chartingToolkit:LineSeries.DataPointStyle>
-            </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="Komerční banka" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[KB]}">
+            <chartingToolkit:LineSeries Title="{Binding BankRates[2].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[2].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Red"/>
                     </Style>
                 </chartingToolkit:LineSeries.DataPointStyle>
             </chartingToolkit:LineSeries>
-            <chartingToolkit:LineSeries Title="Česká spořitelna" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[SPORITELNA]}">
+            <chartingToolkit:LineSeries Title="{Binding BankRates[3].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[3].Value}">
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
+                        <Setter Property="Background" Value="Orange"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+            </chartingToolkit:LineSeries>
+            <chartingToolkit:LineSeries Title="{Binding BankRates[4].Key, Converter={StaticResource convTitle}}" IndependentValuePath="Key" DependentValuePath="Value.BuyRate" ItemsSource="{Binding BankRates[4].Value}">
                 <chartingToolkit:LineSeries.DataPointStyle>
                     <Style TargetType="{x:Type chartingToolkit:LineDataPoint}">
                         <Setter Property="Background" Value="Green"/>

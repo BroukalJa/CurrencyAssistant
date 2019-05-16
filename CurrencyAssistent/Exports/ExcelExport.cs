@@ -134,50 +134,50 @@ namespace CurrencyAssistent.Exports
                         sheetData.AppendChild(currencyHeaderRow);
                         mergeCells1.AppendChild(new MergeCell() { Reference = "A" + rowIndex + ":K" + rowIndex + "" });
                         rowIndex++;
-                        var dates = cur.BankRates[cur.BankRates.Keys.First()].Select(x => x.Key).ToList();
+                        var dates = cur.BankRates[0].Value.Select(x => x.Key).ToList();
                         foreach (var date in dates)
                         {
                             Row newRow = new Row() { Height = 24, CustomHeight = true };
                             newRow.AppendChild(new Cell() { StyleIndex = 1, CellValue = new CellValue(date.ToShortDateString()), DataType = CellValues.Date });
-                            newRow.AppendChild(new Cell() { StyleIndex = 1, CellValue = new CellValue(cur.BankRates[cur.BankRates.Keys.First()].First(x => x.Key == date).Value.Amount.ToString()), DataType = CellValues.Number });
-                            if (cur.BankRates.Keys.Contains(DataClass.BankEnumerator.CNB))
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CNB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',','.')), DataType = CellValues.Number });
+                            newRow.AppendChild(new Cell() { StyleIndex = 1, CellValue = new CellValue(cur.BankRates[0].Value.First(x => x.Key == date).Value.Amount.ToString()), DataType = CellValues.Number });
+                            if (cur.BankRates.Any(x => x.Key == DataClass.BankEnumerator.CNB))
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.CNB).Value.First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
                             else
                                 newRow.AppendChild(new Cell() { StyleIndex = 5 });
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.CSOB) && cur.BankRates[DataClass.BankEnumerator.CSOB].Any(x => x.Key == date))
+                            if (cur.BankRates.Any(x => x.Key == DataClass.BankEnumerator.CSOB) && cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.CSOB).Value.Any(x => x.Key == date))
                             {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CSOB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.CSOB].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                            }
-                            else
-                            {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6 });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5 });
-                            }
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.RB) && cur.BankRates[DataClass.BankEnumerator.RB].Any(x => x.Key == date))
-                            {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.RB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.RB].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.CSOB).Value.First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.CSOB).Value.First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
                             }
                             else
                             {
                                 newRow.AppendChild(new Cell() { StyleIndex = 6 });
                                 newRow.AppendChild(new Cell() { StyleIndex = 5 });
                             }
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.KB) && cur.BankRates[DataClass.BankEnumerator.KB].Any(x => x.Key == date))
+                            if (cur.BankRates.Any(x => x.Key == DataClass.BankEnumerator.RB) && cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.RB).Value.Any(x => x.Key == date))
                             {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.KB].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.KB].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.RB).Value.First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.RB).Value.First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
                             }
                             else
                             {
                                 newRow.AppendChild(new Cell() { StyleIndex = 6 });
                                 newRow.AppendChild(new Cell() { StyleIndex = 5 });
                             }
-                            if (cur.BankRates.ContainsKey(DataClass.BankEnumerator.SPORITELNA) && cur.BankRates[DataClass.BankEnumerator.SPORITELNA].Any(x => x.Key == date))
+                            if (cur.BankRates.Any(x => x.Key == DataClass.BankEnumerator.KB) && cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.KB).Value.Any(x => x.Key == date))
                             {
-                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.SPORITELNA].First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
-                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates[DataClass.BankEnumerator.SPORITELNA].First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.KB).Value.First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.KB).Value.First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                            }
+                            else
+                            {
+                                newRow.AppendChild(new Cell() { StyleIndex = 6 });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5 });
+                            }
+                            if (cur.BankRates.Any(x => x.Key == DataClass.BankEnumerator.SPORITELNA) && cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.SPORITELNA).Value.Any(x => x.Key == date))
+                            {
+                                newRow.AppendChild(new Cell() { StyleIndex = 6, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.SPORITELNA).Value.First(x => x.Key == date).Value.SellRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
+                                newRow.AppendChild(new Cell() { StyleIndex = 5, CellValue = new CellValue(cur.BankRates.First(x => x.Key == DataClass.BankEnumerator.SPORITELNA).Value.First(x => x.Key == date).Value.BuyRate.ToString().Replace(',', '.')), DataType = CellValues.Number });
                             }
                             else
                             {
@@ -188,7 +188,7 @@ namespace CurrencyAssistent.Exports
                             rowIndex++;
                         }
                     }
-                    
+
                     workbook.WorkbookPart.Workbook.Save();
                     workbook.Close();
                 }
@@ -232,7 +232,7 @@ namespace CurrencyAssistent.Exports
             font2.Append(fontSize2);
             font2.Append(fontName2);
 
-          
+
             fonts1.Append(font1);
             fonts1.Append(font2);
 
@@ -259,7 +259,7 @@ namespace CurrencyAssistent.Exports
             patternFill3.Append(backgroundColor1);
 
             fill3.Append(patternFill3);
-            
+
             fills1.Append(fill1);
             fills1.Append(fill2);
             fills1.Append(fill3);
@@ -281,7 +281,7 @@ namespace CurrencyAssistent.Exports
             Border border1 = new Border();
             border1.RightBorder = new RightBorder();
             border1.LeftBorder = new LeftBorder();
-            
+
             border1.RightBorder.Style = BorderStyleValues.Thin;
             border1.LeftBorder.Style = BorderStyleValues.Thin;
 
@@ -294,9 +294,9 @@ namespace CurrencyAssistent.Exports
 
             Border border3 = new Border();
             border3.RightBorder = new RightBorder();
-            
+
             border3.RightBorder.Style = BorderStyleValues.Thin;
-            
+
 
             // <APENDING Borders>
             borders1.Append(border0);

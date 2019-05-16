@@ -28,9 +28,27 @@ namespace CurrencyAssistent.DataParsers
             }
             foreach (var cur in CurrencySingleton.Instance.Currencies)
             {
-                var blist = cur.BankRates.Keys.ToList();
-                foreach (var bank in blist)
+                //var blist = cur.BankRates.Select(x => x.Key).ToList();
+                //foreach (var bank in blist)
+                //{
+                //    var sorted = cur.BankRates[bank].OrderBy(x => x.Key).ToList();
+                //    cur.BankRates[bank] = new System.Collections.ObjectModel.ObservableCollection<KeyValuePair<DateTime, DataClass.DayCurrency>>();
+                //    foreach (var pair in sorted)
+                //    {
+                //        cur.BankRates[bank].Add(new KeyValuePair<DateTime, DataClass.DayCurrency>(pair.Key, pair.Value));
+                //    }
+                //    //cur.BankRates[bank] = cur.BankRates[bank].OrderBy(x => x.Key).ToList()
+                //    //cur.BankRates[bank] = cur.BankRates[bank].OrderBy(x => x.Key).ToDictionary(v => v.Key, v => v.Value);
+                //}
+                for (int i = 0; i < cur.BankRates.Count; i++)
                 {
+                    var sorted = cur.BankRates[i].Value.OrderBy(x => x.Key).ToList();
+                    cur.BankRates[i] = new KeyValuePair<DataClass.BankEnumerator, System.Collections.ObjectModel.ObservableCollection<KeyValuePair<DateTime, DataClass.DayCurrency>>>(cur.BankRates[i].Key, new System.Collections.ObjectModel.ObservableCollection<KeyValuePair<DateTime, DataClass.DayCurrency>>());
+                    foreach (var pair in sorted)
+                    {
+                        cur.BankRates[i].Value.Add(new KeyValuePair<DateTime, DataClass.DayCurrency>(pair.Key, pair.Value));
+                    }
+                    //cur.BankRates[bank] = cur.BankRates[bank].OrderBy(x => x.Key).ToList()
                     //cur.BankRates[bank] = cur.BankRates[bank].OrderBy(x => x.Key).ToDictionary(v => v.Key, v => v.Value);
                 }
             }

@@ -10,20 +10,28 @@ namespace CurrencyAssistent.DataClass
 {
     public class Currency : INotifyPropertyChanged
     {
-        public Currency() { }
+        public Currency()
+        {
+            BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.CNB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.CSOB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.KB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.RB, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(BankEnumerator.SPORITELNA, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+
+        }
 
         public string Name { get; set; }
 
-        public Dictionary<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>> BankRates { get; set; } = new Dictionary<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>();
+        public ObservableCollection<KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>> BankRates { get; set; } = new ObservableCollection<KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void AddRate(BankEnumerator bank, decimal sellRate, decimal? buyRate, int amount, DateTime date)
         {
             if (!BankRates.Any(x => x.Key == bank))
-                BankRates.Add(bank, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>());
-            if(!BankRates[bank].Any(x => x.Key == date))
-                BankRates[bank].Add(new KeyValuePair<DateTime, DayCurrency>(date, new DayCurrency() { BuyRate = buyRate, Amount = amount, SellRate = sellRate }));
+                BankRates.Add(new KeyValuePair<BankEnumerator, ObservableCollection<KeyValuePair<DateTime, DayCurrency>>>(bank, new ObservableCollection<KeyValuePair<DateTime, DayCurrency>>()));
+            if (!BankRates.First(x => x.Key == bank).Value.Any(x => x.Key == date))
+                BankRates.First(x => x.Key == bank).Value.Add(new KeyValuePair<DateTime, DayCurrency>(date, new DayCurrency() { BuyRate = buyRate, Amount = amount, SellRate = sellRate }));
         }
 
         //public void AddBuyRate(BankEnumerator bank, decimal rate, DateTime date)
@@ -38,8 +46,8 @@ namespace CurrencyAssistent.DataClass
         {
             get
             {
-                if (BankRates.Keys.Contains(BankEnumerator.CNB) && BankRates[BankEnumerator.CNB].Any(x => x.Key == DateTime.Today))
-                    return new CurrentCurrency() { Rate = BankRates[BankEnumerator.CNB].First(x => x.Key == DateTime.Today).Value.SellRate, Bank = BankEnumerator.CNB };
+                if (BankRates.Any(x => x.Key == BankEnumerator.CNB) && BankRates.First(x => x.Key == BankEnumerator.CNB).Value.Count > 0)
+                    return new CurrentCurrency() { Rate = BankRates.First(x => x.Key == BankEnumerator.CNB).Value.Last().Value.SellRate, Bank = BankEnumerator.CNB };
                 else
                     return null;
             }
