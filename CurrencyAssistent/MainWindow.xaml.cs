@@ -27,6 +27,7 @@ namespace CurrencyAssistent
             InitializeComponent();
             //Comunicators.NewVersionDownloader.GetNewVersion();
             CurrencySingleton.Instance.PropertyChanged += Instance_PropertyChanged;
+            CurrencySingleton.Instance.LoadCheckedCurrencies();
             biDownload.IsBusy = CurrencySingleton.Instance.DownloadRunning;
             lvCheckboxes.ItemsSource = CurrencySingleton.Instance.Currencies;
             lvGraphs.ItemsSource = CurrencySingleton.Instance.Currencies;

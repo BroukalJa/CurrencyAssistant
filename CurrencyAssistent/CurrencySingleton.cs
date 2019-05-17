@@ -24,6 +24,17 @@ namespace CurrencyAssistent
             cur.AddRate(bank, sellRate, buyRate, amount, date);
         }
 
+        public IsolatedStorageWorkers.IsolatedStorageWorker.ISStore ISStore { get; set; }
+
+        public void LoadCheckedCurrencies()
+        {
+            foreach(var cur in ISStore.CheckedCurrencies)
+            {
+                if (Currencies.Any(x => x.Name == cur))
+                    Currencies.First(x => x.Name == cur).Visible = true;
+            }
+        }
+
         public void FilterCurrencies()
         {
             foreach(var cur in Currencies)

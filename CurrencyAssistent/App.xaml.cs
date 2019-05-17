@@ -28,7 +28,8 @@ namespace CurrencyAssistent
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //DataParsers.Parsers.CurrencyParser();
+            DataParsers.Parsers.CurrencyParser();
+            IsolatedStorageWorkers.IsolatedStorageWorker.LoadIS();
             Comunicators.CurrencyDownloader.DownloadFiles();
             var time = DateTime.Now.TimeOfDay.TotalMilliseconds;
             double interval = 0;
@@ -46,6 +47,11 @@ namespace CurrencyAssistent
             (sender as Timer).Interval = interval1Day;
             (sender as Timer).Enabled = true;
             Comunicators.CurrencyDownloader.DownloadFiles();
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            IsolatedStorageWorkers.IsolatedStorageWorker.UlozIS();
         }
     }
 }

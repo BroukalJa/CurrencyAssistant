@@ -98,6 +98,7 @@
     <Compile Include="DataClass\DayCurrency.cs" />
     <Compile Include="DataParsers\Parsers.cs" />
     <Compile Include="Exports\ExcelExport.cs" />
+    <Compile Include="IsolatedStorageWorkers\IsolatedStorageWorker.cs" />
     <Compile Include="Views\CurrentCurrencyDetail.xaml.cs">
       <DependentUpon>CurrentCurrencyDetail.xaml</DependentUpon>
     </Compile>

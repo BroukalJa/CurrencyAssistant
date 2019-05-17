@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CurrencyAssistent"
         xmlns:view="clr-namespace:CurrencyAssistent.Views"
         mc:Ignorable="d"
-        Title="Kurzovní asistent" Height="450" Width="800">
+        Title="Kurzovní asistent" Height="600" Width="1200">
     <xceed:BusyIndicator x:Name="biDownload" BusyContent="Probíhá stahování">
         <Grid>
             <Grid.RowDefinitions>
